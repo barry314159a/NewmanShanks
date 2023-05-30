@@ -1,0 +1,135 @@
+\documentclass{article}
+\usepackage[normalem]{ulem}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{thmtools}
+\declaretheoremstyle[headfont=\normalfont]{normalhead}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{morefloats}
+\usepackage{hyperref}
+\usepackage{mathrsfs}
+\usepackage{listings}
+\hypersetup{
+    colorlinks=false,
+    linkcolor=cyan,
+    filecolor=cyan,      
+    urlcolor=cyan,
+}
+\usepackage{biblatex}
+\usepackage{ amssymb }
+\usepackage{textcomp}
+\usepackage{mathabx }
+\usepackage{url}
+\usepackage{float}
+\usepackage{biblatex}
+\addbibresource{main.bib}
+\newtheoremstyle{mydef}
+{\topsep}{\topsep}%
+{}{}%
+{\itshape}{}
+{\newline}
+{%
+  \rule{\textwidth}{0.0pt}\\*%
+  \thmname{#1}~\thmnumber{#2}\thmnote{\-\ #3}.\\*[-1.5ex]%
+  \rule{\textwidth}{0.0pt}}%
+
+\begin{document}
+%\theoremstyle{mydef}
+\newcommand{\rb}[1]{\raisebox{-.2ex}[0pt]{#1}}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{theorem}{Theorem}
+\newtheorem*{theorem-non}{Theorem}
+\newtheorem{remark}{Remark}
+\newtheorem{proposal}{Proposal}
+\newtheorem{proposition}{Proposition}
+\newtheorem*{proposition-non}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{observation}{Observation}
+\newtheorem{definition}{Definition}
+\newtheorem*{question-non}{Question}
+\newtheorem*{corollary-non}{Corollary}
+\author{Barry Brent}
+
+\date{draft 14h 30 May 2023}
+
+\title{Application of the multinomial
+theorem to the constant term of a
+power series.
+}
+\maketitle
+\begin{abstract}\noindent
+We express the constant term of a Laurent series 
+in terms of the theory of integer partitions. 
+\hskip -.2in
+\end{abstract}
+\section{Introduction}
+We begin with a Laurent series
+$f(x) = 1/x+ a_1 +a_2 x + ...$.
+Let $C(f^k)$ denote the
+constant term of $f(x)^k$.
+We study
+$C(f^k)$ in this article,
+mostly in settings where
+(after substituting one of 
+several exponential functions for $x$)
+$f$ is a meromorphic modular form
+for some matrix group.
+\newline \newline \noindent
+The constant $C(f^k)$ is
+a function of the
+coefficients 
+$a_1, ...,a_k$.
+Furthermore the numbers
+$C(f), C(f^2), ...$
+determine 
+$a_1, a_2, ...$.
+To see  this, let 
+$c_k$ be the coefficient of
+$x^k$ in the 
+polynomial $h(x) =
+(1 +\sum_{n=1}^k a_n x^n)^k$.
+It is clear that $c_k = C(f^k)$.
+We have
+$c_1 = a_1$, 
+$c_2 = a_1^2 + 2a_2$, 
+$c_3 = a_1^3 + 6a_1 a_2 + 3 a_3$, \it etc. \rm 
+We wish to determine the numerical coefficients
+in these expressions.
+\newline \newline \noindent
+Let us write $a_0 = 1$. For an integer partition $\lambda$ of $n$,
+let us write \vskip .1in \noindent
+$\lambda= (\lambda_1, ..., \lambda_{m(\lambda)})$,
+$|\lambda| = n$, $\lambda^* = 
+\sum_{t=1}^{m(\lambda)} t \lambda_t$,
+and, for $n = 0, 1, ...,k$:
+$y_n = a_n x^n$. Finally,
+let us write ${n \choose \lambda}$
+for the multinomial coefficient
+$$
+{n \choose \lambda_1, ..., \lambda_{m(\lambda)}} = 
+\frac{n!}{\lambda_1! ...  \lambda_{m(\lambda)}!}.
+$$
+Then $h(x) = 
+(\sum_{n=0}^k y_n)^k = $ (by the multinomial theorem)
+$$
+\sum_{|\lambda| = k} {k \choose \lambda} 
+\prod_{t=1}^{m(\lambda)} y_t^{\lambda_t} =
+\sum_{|\lambda| = k} {k \choose \lambda} 
+\prod_{t=1}^{m(\lambda)} a_t^{\lambda_t} x^{t\lambda_t} =
+\sum_{j=0}^{k^2} x^j 
+\left (\sum_{\substack{|\lambda| = k\\
+\lambda^*= j}
+} {k \choose \lambda} \prod_{t=1}^{m(\lambda)} a_t^{\lambda_t}\right ).
+$$
+Therefore
+$$
+c_k = \sum_{\substack{|\lambda| = k\\
+\lambda^* = k}
+} {k \choose \lambda} \prod_{t=1}^{m(\lambda)} 
+a_t^{\lambda_t}.
+$$
+\printbibliography
+$\tt{barrybrent@iphouse.com}$
+\end{document}
